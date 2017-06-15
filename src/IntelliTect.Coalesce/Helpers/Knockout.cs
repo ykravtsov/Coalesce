@@ -484,19 +484,20 @@ namespace IntelliTect.Coalesce.Helpers
         }
 
         public static HtmlString SelectFor<T>(Expression<Func<T, Enum>> propertySelector,
-            string placeholder = "")
+            string placeholder = "", int minimumResultsForSearch = 5)
         {
             var propertyModel = ReflectionRepository.PropertyBySelector(propertySelector);
-            return SelectEnum(propertyModel, placeholder);
+            return SelectEnum(propertyModel, placeholder, minimumResultsForSearch);
         }
 
-        public static HtmlString SelectEnum(PropertyViewModel propertyModel, string placeholder = "")
+        public static HtmlString SelectEnum(PropertyViewModel propertyModel, string placeholder = "", int minimumResultsForSearch = 5)
         {
             string result = string.Format(@"
                 <select class=""form-control"" 
-                    data-bind=""select2: {0}"" 
-                    placeholder=""{1}"">",
-                propertyModel.JsVariableForBinding, placeholder);
+                    data-bind=""select2: {0}""
+                    data-minimum-results-for-search=""{1}""
+                    placeholder =""{2}"">",
+                propertyModel.JsVariableForBinding, minimumResultsForSearch, placeholder);
 
             foreach (var item in propertyModel.Type.EnumValues)
             {
