@@ -215,7 +215,7 @@ gulp.task('coalesce:build', shell.task([
 // Sometimes the CoalesceExe folder doesn't get new DLLs and needs to have all files deleted.
 gulp.task('coalesce', ['coalesce:build'], shell.task
     ([
-        '"%temp%/CoalesceExe/IntelliTect.Coalesce.Cli.exe" ' +
+        '"%temp%/CoalesceExe/dotnet-coalesce.exe" ' +
         '-dc AppDbContext -dp ..\\Coalesce.Domain -wp .\\ -filesOnly true -ns Coalesce.Web'
     ],
     { verbose: true }
