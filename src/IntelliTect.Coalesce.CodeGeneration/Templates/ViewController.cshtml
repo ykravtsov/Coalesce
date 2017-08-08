@@ -18,6 +18,9 @@
     namespaces.Add("Microsoft.AspNetCore.Mvc");
     namespaces.Add("Microsoft.Extensions.PlatformAbstractions");
     namespaces.Add(contextInfo.Namespace);
+    namespaces.Add("Microsoft.Extensions.Logging");
+    namespaces.Add("HHExpress.Web.Services");
+    namespaces.Add("Microsoft.AspNetCore.Http");
 }
 @foreach (var ns in ReflectionRepository.Namespaces.Where(f => f != "System"))
 {
@@ -25,55 +28,99 @@
 }
 @foreach (var ns in namespaces)
 {
-@:using @ns;
+    @:using @ns;
 }
 
 namespace @(namespaceName).Controllers
 {
-    @if (!string.IsNullOrWhiteSpace(Model.AreaName))
-    {
+@if (!string.IsNullOrWhiteSpace(Model.AreaName))
+{
     @:[Area("@Model.AreaName")]
     }
-    @(model.SecurityInfo.ClassAnnotation)
-    public partial class @(model.ControllerName)Controller 
-        : BaseViewController<@(model.FullName), @contextInfo.Name> 
-    { 
-        public @(model.ControllerName)Controller() : base() { }
+@(model.SecurityInfo.ClassAnnotation)
+    public partial class @(model.ControllerName)Controller
+    : BaseViewController<@(model.FullName), @contextInfo.Name>
+        {
+        private readonly ILogger Logger;
+        private readonly IUserManagerService UserManagerService;
+        private readonly IControllerService ControllerService;
+        private readonly IHttpContextService HttpContextService;
+        private readonly IHHExpressDbContext HHExpressDbContext;
 
+    public @(model.ControllerName)Controller(ILogger<@(model.BaseViewModel.FullName)>
+        logger, IUserManagerService userManagerService, IControllerService controller, IHttpContextService httpContextService, IHHExpressDbContext dbContext
+        ) : base()
+        {
+        Logger = logger;
+        if(userManagerService == null)
+        {
+        UserManagerService = new UserManagerService();
+        }
+        else
+        {
+        UserManagerService = userManagerService;
+        }
+        if(controller == null)
+        {
+        ControllerService = new ControllerService(this);
+        }
+        else
+        {
+        ControllerService = controller;
+        }
+        if(httpContextService == null)
+        {
+            if(HttpContext != null)
+                HttpContextService = new HttpContextService();
+        }
+        else
+        {
+        HttpContextService = httpContextService;
+        }
+        if(dbContext == null)
+        {
+        HHExpressDbContext = new AppContext();
+        }
+        else
+        {
+        HHExpressDbContext = dbContext;
+        }
+        }
         @(model.SecurityInfo.ReadAnnotation)
         public ActionResult Cards(){
-            return IndexImplementation(false, @@"@viewLocation/Generated/@(model.Name)/Cards.cshtml");
+        return IndexImplementation(false, @@"@viewLocation/Generated/@(model.Name)/Cards.cshtml");
         }
 
         @(model.SecurityInfo.ReadAnnotation)
         public ActionResult Table(){
-            return IndexImplementation(false, @@"@viewLocation/Generated/@(model.Name)/Table.cshtml");
+        return IndexImplementation(false, @@"@viewLocation/Generated/@(model.Name)/Table.cshtml");
         }
 
-        @if (model.SecurityInfo.IsEditAllowed()) { 
-        <text>
-        @(model.SecurityInfo.EditAnnotation)
-        public ActionResult TableEdit(){
+        @if (model.SecurityInfo.IsEditAllowed())
+            {
+            <text>
+            @(model.SecurityInfo.EditAnnotation)
+            public ActionResult TableEdit(){
             return IndexImplementation(true, @@"@viewLocation/Generated/@(model.Name)/Table.cshtml");
+            }
+
+            @(model.SecurityInfo.EditAnnotation)
+            public ActionResult CreateEdit(){
+            return CreateEditImplementation(@@"@viewLocation/Generated/@(model.Name)/CreateEdit.cshtml");
+            }
+
+            @(model.SecurityInfo.EditAnnotation)
+            public ActionResult EditorHtml(bool simple = false)
+            {
+            return EditorHtmlImplementation(simple);
+            }
+            </text>
         }
 
-        @(model.SecurityInfo.EditAnnotation)
-        public ActionResult CreateEdit(){
-            return CreateEditImplementation(@@"@viewLocation/Generated/@(model.Name)/CreateEdit.cshtml");
-        }
-                      
-        @(model.SecurityInfo.EditAnnotation)
-        public ActionResult EditorHtml(bool simple = false)
-        {
-            return EditorHtmlImplementation(simple);
-        }
-        </text>
-        }
-                      
         @(model.SecurityInfo.EditAnnotation)
         public ActionResult Docs()
         {
-            return DocsImplementation();
-        }    
-    }
-}
+        return DocsImplementation();
+        }
+        }
+        }

@@ -27,10 +27,10 @@
     namespaces.Add("System.Net");
     namespaces.Add("System.Threading.Tasks");
     namespaces.Add($"{namespaceName}.Models");
-
+    namespaces.Add("Microsoft.Extensions.Logging");
     var createIf = "";
     var editElseIf = "";
-    
+
 
     // Check if creates/edits aren't allowed
     @if (model.PrimaryKey.Type.IsString)
@@ -48,7 +48,7 @@
         createIf = $"if (!dto.{model.PrimaryKey.Name}.HasValue && !_model.SecurityInfo.IsCreateAllowed(User)) {{";
         editElseIf = $"else if (dto.{model.PrimaryKey.Name}.HasValue && !_model.SecurityInfo.IsEditAllowed(User)) {{";
     }
-        
+
 
 }
 @foreach (var ns in ReflectionRepository.Namespaces.Where(f => f != "System"))
@@ -83,21 +83,24 @@ else
     : LocalBaseApiController<@(model.BaseViewModel.FullName), @(model.DtoName)>
         {
         private ClassViewModel _model;
+        private readonly ILogger Logger;
+        public @(model.ControllerName)Controller(ILogger<@(model.BaseViewModel.FullName)>
+            logger)
+            {
+            _model = ReflectionRepository.Models.Single(m => m.Name == "@(model.Name)");
+            Logger = logger;
+            }
 
-        public @(model.ControllerName)Controller()
-        {
-        _model = ReflectionRepository.Models.Single(m => m.Name == "@(model.Name)");
-        }
-
-        @if (securityInfo.IsReadAllowed())
-        {
-            <text>
-            /// <summary>
-            /// Returns @(model.DtoName)
-            /// </summary>
-            [HttpGet("list")]
-            @(securityInfo.ReadAnnotation)
-            public virtual async Task<GenericListResult<@(model.BaseViewModel.FullName), @(model.DtoName)>> List(
+            @if (securityInfo.IsReadAllowed())
+            {
+                <text>
+                /// <summary>
+                    /// Returns @(model.DtoName)
+                    ///
+                ///</summary>
+                [HttpGet("list")]
+                @(securityInfo.ReadAnnotation)
+                public virtual async Task<GenericListResult<@(model.BaseViewModel.FullName), @(model.DtoName)>> List(
             string includes = null,
             string orderBy = null, string orderByDescending = null,
             int? page = null, int? pageSize = null,
@@ -337,7 +340,7 @@ else
         /// </summary>
         [HttpPost("CsvUpload")]
         @(securityInfo.ReadAnnotation)
-        public virtual async Task<IEnumerable<SaveResult<@(model.DtoName)>>> CsvUpload(Microsoft.AspNetCore.Http.IFormFile file, bool hasHeader = true) 
+        public virtual async Task<IEnumerable<SaveResult<@(model.DtoName)>>> CsvUpload(Microsoft.AspNetCore.Http.IFormFile file, bool hasHeader = true)
         {
             if (file != null && file.Length > 0)
             {
@@ -357,7 +360,7 @@ else
         /// </summary>
         [HttpPost("CsvSave")]
         @(securityInfo.ReadAnnotation)
-        public virtual async Task<IEnumerable<SaveResult<@(model.DtoName)>>> CsvSave(string csv, bool hasHeader = true) 
+        public virtual async Task<IEnumerable<SaveResult<@(model.DtoName)>>> CsvSave(string csv, bool hasHeader = true)
         {
             // Get list from CSV
             var list = IntelliTect.Coalesce.Helpers.CsvHelper.ReadCsv<@(model.DtoName)>(csv, hasHeader);
