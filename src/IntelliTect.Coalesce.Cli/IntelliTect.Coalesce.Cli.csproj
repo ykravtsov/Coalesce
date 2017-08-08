@@ -5,7 +5,7 @@
     <PackageVersion>2.0.0</PackageVersion>
     <TargetFramework>net46</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <AssemblyName>IntelliTect.Coalesce.Cli</AssemblyName>
+    <AssemblyName>dotnet-coalesce</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>IntelliTect.Coalesce.Cli</PackageId>
     <Authors>IntelliTect-Nuget</Authors>
@@ -16,9 +16,10 @@
     <PackageTags>IntelliTect Coalesce MVC Framework</PackageTags>
     <IncludeContentInPack>false</IncludeContentInPack>
     <IncludeBuildOutput>true</IncludeBuildOutput>
+    <PackageType>DotNetCliTool</PackageType>
+    <IsTool>true</IsTool>
     <RepositoryUrl>https://github.com/IntelliTect/Coalesce</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <IsTool>true</IsTool>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
