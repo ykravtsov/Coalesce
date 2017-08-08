@@ -16,8 +16,7 @@
     <PackageTags>IntelliTect Coalesce MVC Framework</PackageTags>
     <IncludeContentInPack>false</IncludeContentInPack>
     <IncludeBuildOutput>true</IncludeBuildOutput>
-    <PackageType>DotNetCliTool</PackageType>
-    <IsTool>true</IsTool>
+    <PackageType>DotnetCliTool</PackageType>
     <RepositoryUrl>https://github.com/IntelliTect/Coalesce</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
