@@ -83,12 +83,11 @@ else
     : LocalBaseApiController<@(model.BaseViewModel.FullName), @(model.DtoName)>
         {
         private ClassViewModel _model;
-        private readonly ILogger Logger;
-        public @(model.ControllerName)Controller(ILogger<@(model.BaseViewModel.FullName)>
-            logger)
+
+        public @(model.ControllerName)Controller()
             {
             _model = ReflectionRepository.Models.Single(m => m.Name == "@(model.Name)");
-            Logger = logger;
+
             }
 
             @if (securityInfo.IsReadAllowed())

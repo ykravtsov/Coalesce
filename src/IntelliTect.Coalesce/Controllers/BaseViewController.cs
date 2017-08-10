@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
+using Microsoft.Extensions.Logging;
 
 namespace IntelliTect.Coalesce.Controllers
 {
@@ -27,6 +28,7 @@ namespace IntelliTect.Coalesce.Controllers
     {
         protected ClassViewModel classViewModel;
 
+        protected ILogger Logger;
         /// <summary>
         /// Override this method to set the API name.
         /// </summary>

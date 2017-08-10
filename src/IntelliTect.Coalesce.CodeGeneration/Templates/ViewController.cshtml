@@ -41,14 +41,15 @@ namespace @(namespaceName).Controllers
     public partial class @(model.ControllerName)Controller
     : BaseViewController<@(model.FullName), @contextInfo.Name>
         {
-        private readonly ILogger Logger;
+
         private readonly IUserManagerService UserManagerService;
         private readonly IControllerService ControllerService;
         private readonly IHttpContextService HttpContextService;
         private readonly IHHExpressDbContext HHExpressDbContext;
+        private readonly IDateService DateService;
 
     public @(model.ControllerName)Controller(ILogger<@(model.BaseViewModel.FullName)>
-        logger, IUserManagerService userManagerService, IControllerService controller, IHttpContextService httpContextService, IHHExpressDbContext dbContext
+        logger, IUserManagerService userManagerService, IControllerService controller, IHttpContextService httpContextService, IHHExpressDbContext dbContext, IDateService dateservice
         ) : base()
         {
         Logger = logger;
@@ -84,6 +85,14 @@ namespace @(namespaceName).Controllers
         else
         {
         HHExpressDbContext = dbContext;
+        }
+        if(dateservice == null)
+        {
+            DateService = new DateService();
+        }
+        else
+        {
+            DateService = dateservice;
         }
         }
         @(model.SecurityInfo.ReadAnnotation)
