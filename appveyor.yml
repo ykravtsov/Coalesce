@@ -39,6 +39,7 @@ after_build:
   - dotnet pack "src\IntelliTect.Coalesce\IntelliTect.Coalesce.csproj" -c %CONFIGURATION% --no-build --include-symbols --output "%APPVEYOR_BUILD_FOLDER%\artifacts"
   - dotnet pack "src\IntelliTect.Coalesce.CodeGeneration\IntelliTect.Coalesce.CodeGeneration.csproj" -c %CONFIGURATION% --no-build --include-symbols --output "%APPVEYOR_BUILD_FOLDER%\artifacts"
   - dotnet pack "src\IntelliTect.Coalesce.Cli\IntelliTect.Coalesce.Cli.csproj" -c %CONFIGURATION% --no-build --include-symbols --output "%APPVEYOR_BUILD_FOLDER%\artifacts"
+  - dotnet pack "src\IntelliTect.Coalesce.DotnetCliTool\IntelliTect.Coalesce.DotnetCliTool.csproj" -c %CONFIGURATION% --no-build --include-symbols --output "%APPVEYOR_BUILD_FOLDER%\artifacts"
 artifacts:
 - path: artifacts\**\*.*
 deploy:
