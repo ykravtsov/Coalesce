@@ -25,12 +25,12 @@ namespace Coalesce.Web.Tests
         public SecurityTests()
         {
             _process = Processes.StartDotNet();
-            _dataContext = DependencyProvider.ProjectContext(@"..\..\..\..\..\Coalesce.Domain");
+            _dataContext = MsBuildProjectContextBuilder.CreateContext(@"..\..\..\..\..\Coalesce.Domain");
 
-            IModelTypesLocator typeLocator = DependencyProvider.ModelTypesLocator(_dataContext);
-            ModelType dataModel = ValidationUtil.ValidateType("AppDbContext", "dataContext", typeLocator, throwWhenNotFound: false);
+            var typeLocator = IntelliTect.Coalesce.CodeGeneration.Scripts.ModelTypesLocator.FromProjectContext(_dataContext);
+            var contextSymbol = ValidationUtil.ValidateType("AppDbContext", "dataContext", typeLocator, throwWhenNotFound: false);
             _models = ReflectionRepository
-                            .AddContext((INamedTypeSymbol)dataModel.TypeSymbol)
+                            .AddContext(contextSymbol)
                             .Where(m => m.PrimaryKey != null)
                             .ToList();
         }

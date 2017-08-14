@@ -27,18 +27,9 @@ namespace IntelliTect.Coalesce.Controllers
     {
         protected ClassViewModel classViewModel;
 
-        /// <summary>
-        /// Override this method to set the API name.
-        /// </summary>
-        protected virtual string ApiName
-        {
-            get { return ControllerName; }
-        }
-
-
         protected BaseViewController()
         {
-            classViewModel = ReflectionRepository.GetClassViewModel(typeof(T), this.GetType().Name, ApiName);
+            classViewModel = ReflectionRepository.GetClassViewModel<T>();
         }
 
         // Page Listing the items in the collection.
@@ -59,8 +50,8 @@ namespace IntelliTect.Coalesce.Controllers
             ViewBag.Query = ViewBag.Query == "" ? null : new HtmlString( ViewBag.Query );
 
             @ViewBag.Title = typeof(T).Name + " List";
-            var model = ReflectionRepository.GetClassViewModel(typeof(T), this.GetType().Name, ApiName);
-            return View(viewName, model);
+
+            return View(viewName, classViewModel);
         }
 
         // GET: Editing page
@@ -108,9 +99,9 @@ namespace IntelliTect.Coalesce.Controllers
         {
             // Load TypeScript docs
             var baseClassPath = Path.Combine(AppEnv.ContentRootPath, "Scripts", "Coalesce", "coalesce.ko.base.ts");
-            var path = Path.Combine(AppEnv.ContentRootPath, "Scripts", "Generated", $"ko.{classViewModel.ViewModelClassName}.ts");
+            var path = Path.Combine(AppEnv.ContentRootPath, "Scripts", "Generated", $"ko.{classViewModel.ViewModelClassName}.{(classViewModel.HasTypeScriptPartial ? "Partial." : "")}ts");
 
-            ViewBag.ObjDoc = GenerateTypeScriptDocs(path, classViewModel.ViewModelClassName);
+            ViewBag.ObjDoc = GenerateTypeScriptDocs(path, classViewModel.ViewModelGeneratedClassName);
             ViewBag.BaseObjDoc = GenerateTypeScriptDocs(baseClassPath, "BaseViewModel");
 
             path = Path.Combine(AppEnv.ContentRootPath, "Scripts", "Generated", $"ko.{classViewModel.ListViewModelClassName}.ts");

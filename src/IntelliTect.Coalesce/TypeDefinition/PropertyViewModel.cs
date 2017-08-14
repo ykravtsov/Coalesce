@@ -547,7 +547,7 @@ namespace IntelliTect.Coalesce.TypeDefinition
         }
 
         /// <summary>
-        /// Now to search for the string when this is a search property.
+        /// How to search for the string when this is a search property.
         /// </summary>
         public SearchAttribute.SearchMethods SearchMethod =>
             Wrapper.GetAttributeValue<SearchAttribute, SearchAttribute.SearchMethods>(a => a.SearchMethod)
@@ -675,7 +675,7 @@ namespace IntelliTect.Coalesce.TypeDefinition
                 if (value != null) return value;
                 // See if this is a one-to-one using the parent's key
                 // Look up the other object and check the key
-                var vm = ReflectionRepository.GetClassViewModel(PureType.Name);
+                var vm = PureType.ClassViewModel;
                 if (vm != null)
                 {
                     if (vm.IsOneToOne)
