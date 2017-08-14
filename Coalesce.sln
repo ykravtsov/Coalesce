@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{18165BA2-31FA-4D8E-94BE-AAD008D6BCEB}"
 EndProject
@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
+		src\Directory.Build.props = src\Directory.Build.props
 		global.json = global.json
 	EndProjectSection
 EndProject
@@ -29,6 +30,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coalesce.Domain.Tests", "src\Coalesce.Domain.Tests\Coalesce.Domain.Tests.csproj", "{06AD3635-FFFE-4254-80EB-F3F3424A8460}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntelliTect.Coalesce.Cli", "src\IntelliTect.Coalesce.Cli\IntelliTect.Coalesce.Cli.csproj", "{3B393517-9C91-4432-B9D0-F48488767B8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliTect.Coalesce.DotnetCliTool", "src\IntelliTect.Coalesce.DotnetCliTool\IntelliTect.Coalesce.DotnetCliTool.csproj", "{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +102,14 @@ Global
 		{3B393517-9C91-4432-B9D0-F48488767B8F}.release_x86|Any CPU.Build.0 = Release|Any CPU
 		{3B393517-9C91-4432-B9D0-F48488767B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B393517-9C91-4432-B9D0-F48488767B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.debug_x86|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.debug_x86|Any CPU.Build.0 = Debug|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.release_x86|Any CPU.ActiveCfg = Release|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.release_x86|Any CPU.Build.0 = Release|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,5 +123,9 @@ Global
 		{1E015AC9-1537-4078-9167-B5C49A1C7DEE} = {CCBE3CC2-7DA3-4BA1-96A1-7BAAF8533D58}
 		{06AD3635-FFFE-4254-80EB-F3F3424A8460} = {CCBE3CC2-7DA3-4BA1-96A1-7BAAF8533D58}
 		{3B393517-9C91-4432-B9D0-F48488767B8F} = {18165BA2-31FA-4D8E-94BE-AAD008D6BCEB}
+		{7A0BBF82-F110-4520-9FB7-6D6778DBC25B} = {18165BA2-31FA-4D8E-94BE-AAD008D6BCEB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65910759-D8EF-4027-A7D3-D1289AC7E6D3}
 	EndGlobalSection
 EndGlobal

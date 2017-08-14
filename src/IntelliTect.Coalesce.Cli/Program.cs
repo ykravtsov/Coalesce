@@ -1,10 +1,7 @@
 ﻿using IntelliTect.Coalesce.CodeGeneration.Common;
 using IntelliTect.Coalesce.CodeGeneration.Scripts;
 using Microsoft.Extensions.CommandLineUtils;
-using Microsoft.Extensions.ProjectModel;
 using System;
-using System.IO;
-using System.Reflection;
 
 namespace IntelliTect.Coalesce.Cli
 {

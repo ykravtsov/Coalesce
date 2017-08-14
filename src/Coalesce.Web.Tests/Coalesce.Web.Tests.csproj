@@ -2,17 +2,11 @@
 
   <PropertyGroup>
     <Description>Coalesce.Web.Tests Class Library</Description>
-    <Authors>IntelliTect</Authors>
     <TargetFramework>net46</TargetFramework>
     <AssemblyName>Coalesce.Web.Tests</AssemblyName>
     <PackageId>Coalesce.Web.Tests</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,9 +19,6 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Coalesce.Web\Coalesce.Web.csproj" />
