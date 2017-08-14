@@ -151,12 +151,7 @@ namespace IntelliTect.Coalesce.CodeGeneration.Scripts
 
         public ModelTypesLocator(Workspace projectWorkspace, ProjectContext projectContext)
         {
-            if (projectWorkspace == null)
-            {
-                throw new ArgumentNullException(nameof(projectWorkspace));
-            }
-
-            _projectWorkspace = projectWorkspace;
+            _projectWorkspace = projectWorkspace ?? throw new ArgumentNullException(nameof(projectWorkspace));
             _projectContext = projectContext;
         }
 

@@ -2,11 +2,13 @@
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
+    <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
     <AssemblyName>Coalesce.Web</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>Coalesce.Web</PackageId>
     <UserSecretsId>aspnet-AspNetCoreTest-c1a899d5-70d6-46f0-ba4b-f4986ebe6948</UserSecretsId>
     <TypeScriptCompileBlocked>True</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
     <Content Update="wwwroot\**\*;Views\**\*;appsettings.json;web.config">
