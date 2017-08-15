@@ -4,6 +4,7 @@
     <AssemblyName>dotnet-coalesce</AssemblyName>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PackageType>DotnetCliTool</PackageType>
   </PropertyGroup>
 
   <ItemGroup>

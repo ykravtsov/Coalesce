@@ -2,7 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
     <AssemblyName>Coalesce.Web</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>Coalesce.Web</PackageId>
@@ -51,8 +50,8 @@
     <Exec Command="gulp min" />
   </Target>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0-msbuild3-final" />
-    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0-msbuild3-final" />
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.1" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
 </Project>
