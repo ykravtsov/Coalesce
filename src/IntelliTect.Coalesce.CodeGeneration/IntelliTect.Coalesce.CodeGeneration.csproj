@@ -7,6 +7,7 @@
     <IncludeContentInPack>false</IncludeContentInPack>
     <IncludeBuildOutput>true</IncludeBuildOutput>
     <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
   <ItemGroup>

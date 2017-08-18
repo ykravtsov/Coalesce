@@ -1,11 +1,6 @@
 version: 2.0.{build}
 image: Visual Studio 2017
 configuration: Debug
-dotnet_csproj:
-  patch: true
-  file: 'src\Directory.Build.props'
-  version: '{version}'
-  package_version: '{version}'
 cache: 
   - src\Coalesce.Web\node_modules     # local npm modules
   - '%APPDATA%\npm-cache'             # npm cache
