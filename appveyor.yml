@@ -26,11 +26,6 @@ before_build:
 
     npm install
 
-    npm -g install gulp-cli
-
-    gulp coalesce
-
-    cd ..\..
 build:
   parallel: true
   project: Coalesce.sln
