@@ -7,13 +7,17 @@ namespace Coalesce.Domain
 {
     public static class SampleData
     {
+/*
         private static object _lock = new object();
+*/
 
         public static void Initialize(AppDbContext context, int randomSeed = 1)
         {
+/*
             // Lock so that parallel unit tests generate the same data.
             lock (_lock)
             {
+*/
                 // Set the random seed.
                 GenFuBaseValueGenerator.RandomSeed = randomSeed;
 
@@ -120,7 +124,9 @@ namespace Coalesce.Domain
                     context.Cases.AddRange(cases);
                     context.SaveChanges();
                 }
+/*
             }
+*/
         }
     }
 }
