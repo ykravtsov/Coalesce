@@ -473,7 +473,6 @@ module ViewModels {
 			});
 
     
-    	        dto.gender = self.gender();
             // List Object model for CasesAssigned. Allows for loading subsets of data.
             var _casesAssignedList: ListViewModels.CaseList = null;
             self.casesAssignedList = function(loadImmediate = true) {
@@ -507,7 +506,6 @@ module ViewModels {
                 }
             }
 
-                self.gender.subscribe(self.autoSave);
 
             self.showCompanyEditor = function(callback: any) {
                 if (!self.company()) {

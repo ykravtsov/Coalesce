@@ -1,28 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>IntelliTect Coalesce code generation CLI tool.</Description>
-    <Version>2.0.0</Version>
-    <PackageVersion>2.0.0</PackageVersion>
     <TargetFramework>net46</TargetFramework>
     <AssemblyName>IntelliTect.Coalesce.Cli</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>IntelliTect.Coalesce.Cli</PackageId>
-    <Authors>IntelliTect-Nuget</Authors>
-    <PackageLicenseUrl>https://github.com/IntelliTect/Coalesce/blob/master/license.txt</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/IntelliTect/Coalesce/</PackageProjectUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright IntelliTect © 2017, All Rights Reserved.</Copyright>
-    <PackageTags>IntelliTect Coalesce MVC Framework</PackageTags>
-    <RepositoryUrl>https://github.com/IntelliTect/Coalesce</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <DebugType>full</DebugType>
-    <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
