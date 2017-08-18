@@ -26,6 +26,7 @@ before_build:
 
     npm install
 
+    cd ..\..
 build:
   parallel: true
   project: Coalesce.sln
