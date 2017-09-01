@@ -2,6 +2,7 @@
 using IntelliTect.Coalesce.CodeGeneration.Scripts;
 using Microsoft.Extensions.CommandLineUtils;
 using Microsoft.Extensions.ProjectModel;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Reflection;
@@ -10,8 +11,23 @@ namespace IntelliTect.Coalesce.Cli
 {
     public class Program
     {
+        private static void HackForVs2017Update3()
+        {
+            var registryKey = $@"SOFTWARE{(Environment.Is64BitProcess ? @"\Wow6432Node" : string.Empty)}\Microsoft\VisualStudio\SxS\VS7";
+            using (RegistryKey subKey = Registry.LocalMachine.OpenSubKey(registryKey))
+            {
+                string visualStudioPath = subKey?.GetValue("15.0") as string;
+                if (!string.IsNullOrEmpty(visualStudioPath))
+                {
+                    Environment.SetEnvironmentVariable("VSINSTALLDIR", visualStudioPath);
+                    Environment.SetEnvironmentVariable("VisualStudioVersion", @"15.0");
+                }
+            }
+        }
+
         public static void Main(string[] args)
         {
+            HackForVs2017Update3();
             var app = new CommandLineApplication(false)
             {
                 Name = "Coalesce"

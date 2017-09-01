@@ -110,6 +110,7 @@ namespace IntelliTect.Coalesce.DataAnnotations
         {
             if (Read.HasAttribute)
             {
+                if (Read.NoAccess) return false;
                 if (AllowAnonymousAny) return true;
                 if (Read.HasRoles && user != null)
                     return Read.RoleList.Any(s => user.IsInRole(s));
